@@ -18,7 +18,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
   host:
-    - numpy =1.14
+    - numpy >=1.14
     - pip
     - python
   run:

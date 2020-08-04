@@ -1,18 +1,18 @@
 {% set name = "sortednp" %}
-{% set version = "0.2.1" %}
+{% set version = "0.3.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: da5a42868cf833542b46582cff54f500df6388d639db42bb6776edd535d9fb35
+  sha256: 5c662155ece0969ca058482a35b297ad435c3108b5eb111b3caa1388fc638ffc
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-  skip: True  # [py2k]
+  number: 0
+  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
+  skip: true  # [py2k]
 
 requirements:
   build:
@@ -22,7 +22,7 @@ requirements:
     - pip
     - python
   run:
-    - {{ pin_compatible('numpy') }} 
+    - {{ pin_compatible('numpy') }}
     - python
 
 test:

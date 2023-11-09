@@ -1,5 +1,5 @@
 {% set name = "sortednp" %}
-{% set version = "0.4.0" %}
+{% set version = "0.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 96dc648030e00d3ff2626ea9fdd6a958caa2bcd0418124a8d2c984ce925df8a5
+  sha256: 945878b3b5418897cd6b6f1445bfe447f6c4cbc2353e91f19e35157fec6a3fd9
 
 build:
-  number: 4
+  number: 0
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   skip: true  # [py2k]
 

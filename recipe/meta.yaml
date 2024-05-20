@@ -10,19 +10,19 @@ source:
   sha256: 6dbd9964ac49eb1822846f880823b44c5311f7c10b2087532db33dc3e32e74d1
 
 build:
-  number: 0
+  number: 1
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   skip: true  # [py2k]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
   host:
     - numpy >=1.14
     - pip
     - python
   run:
-    - {{ pin_compatible('numpy') }}
     - python
 
 test:

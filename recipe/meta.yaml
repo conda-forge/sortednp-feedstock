@@ -6,30 +6,35 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sortednp-{{ version }}.tar.gz
   sha256: 6dbd9964ac49eb1822846f880823b44c5311f7c10b2087532db33dc3e32e74d1
 
 build:
-  number: 2
-  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
-  skip: true  # [py2k]
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 3
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
     - {{ stdlib("c") }}
   host:
-    - numpy >=1.14
-    - pip
     - python
     - setuptools
+    - pip
+    - numpy >=1.17.3,<2
   run:
     - python
+    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
     - sortednp
-    - sortednp.tests
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://gitlab.sauerburger.com/frank/sortednp

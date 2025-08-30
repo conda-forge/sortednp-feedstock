@@ -12,7 +12,7 @@ source:
 build:
   skip: true  # [py<37 or py>=313]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 3
+  number: 4
 
 requirements:
   build:

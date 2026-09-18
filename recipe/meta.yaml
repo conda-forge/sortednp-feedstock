@@ -6,13 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sortednp-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/sortednp-{{ version }}.tar.gz
   sha256: 6dbd9964ac49eb1822846f880823b44c5311f7c10b2087532db33dc3e32e74d1
 
 build:
   skip: true  # [py<37 or py>=313]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 4
+  number: 5
 
 requirements:
   build:
